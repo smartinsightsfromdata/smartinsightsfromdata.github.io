@@ -1,0 +1,32 @@
+name: (smart) insights from data
+author: Enzo Martoglio
+baseurl: /smartinsightsfromdata
+description: by Enzo Martoglio and co.
+github: http://www.github.com/smartinsightsfromdata
+twitter: http://www.twitter.com/
+facebook: http://www.facebook.com
+linkedin: http://www.linkedin.com
+email: enzo@smartinsightsfromdata.com
+location: 53°59'31"N  1°32'30"W
+disqus: diqus-username
+
+##Make sure to edit the above fields, especially for disqus.
+
+
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
