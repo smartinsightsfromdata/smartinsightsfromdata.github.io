@@ -1,5 +1,5 @@
 ---
-title: Complete choropleth development workflow in R (Part 1)
+title: Complete choropleth dev. workflow in R (Part 1)
 date: 2015-04-21
 ---
 
