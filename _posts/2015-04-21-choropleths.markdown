@@ -57,15 +57,12 @@ On the other hand, as this is a R workflow, in this case I'll stick to R.
 The following code will allow us to see what is in the shapefiles (as normally you download ESRI shapefiles from the ONS portal I'll use this format).
 
 Please note that the packages used are rgeos and rgdal.  The complexities and pitfalls in properly installing these libraries are out of scope of this brief tutorial.  Let me know if is a topic I should cover more in detail.
-
-
 {% highlight R linenos=table %}
 library(rgdal)
 library(rgeos)
 #
 dns <- "/Users/e/Dropbox/dev/DevLib/MyGISLib/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Full_Clipped)"
 ogrInfo(dns, "LSOA_2011_EW")
-
 Source: "/Users/e/Dropbox/dev/DevLib/MyGISLib/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Full_Clipped)", layer: "LSOA_2011_EW"
 Driver: ESRI Shapefile number of rows 36008 
 Feature type: wkbPolygon with 2 dimensions
@@ -76,9 +73,7 @@ Number of fields: 2
       name type length typeName
 1 LSOA11CD    4      9   String
 2 LSOA11NM    4    254   String
-
 {% endhighlight %}
-
 Now let's interpret the above information.
 As discussed above, these are the fully clipped shapefiles for the LSOA areas in England and Wales (E+W).
 There are a total of 36008 polygons in England and Wales.
