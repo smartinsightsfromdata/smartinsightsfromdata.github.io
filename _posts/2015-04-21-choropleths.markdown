@@ -63,16 +63,16 @@ library(rgeos)
 #
 dns <- "/Users/e/Dropbox/dev/DevLib/MyGISLib/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Full_Clipped)"
 ogrInfo(dns, "LSOA_2011_EW")
-Source: "/Users/e/Dropbox/dev/DevLib/MyGISLib/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Full_Clipped)", layer: "LSOA_2011_EW"
-Driver: ESRI Shapefile number of rows 36008 
-Feature type: wkbPolygon with 2 dimensions
-Extent: (82672 5337.9) - (655604.7 657534.1)
-CRS: +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +units=m +no_defs  
-LDID: 0 
-Number of fields: 2 
+ Source: "/Users/e/Dropbox/dev/DevLib/MyGISLib/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Full_Clipped)", layer: "LSOA_2011_EW"
+ Driver: ESRI Shapefile number of rows 36008 
+ Feature type: wkbPolygon with 2 dimensions
+ Extent: (82672 5337.9) - (655604.7 657534.1)
+ CRS: +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +units=m +no_defs  
+ LDID: 0 
+ Number of fields: 2 
       name type length typeName
-1 LSOA11CD    4      9   String
-2 LSOA11NM    4    254   String
+ 1 LSOA11CD    4      9   String
+ 2 LSOA11NM    4    254   String
 {% endhighlight %}
 Now let's interpret the above information.
 As discussed above, these are the fully clipped shapefiles for the LSOA areas in England and Wales (E+W).
