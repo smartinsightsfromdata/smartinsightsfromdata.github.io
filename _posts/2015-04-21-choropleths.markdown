@@ -77,7 +77,7 @@ ogrInfo(dns, "LSOA_2011_EW")
 Now let's interpret the above information.
 As discussed above, these are the fully clipped shapefiles for the LSOA areas in England and Wales (E+W).
 There are a total of 36008 polygons in England and Wales.
-The extent are the coordinates of the total "box" inclusing England and Wales.
+The extent are the coordinates of the total "box" including England and Wales.
 
 Here we encounter the first "real" issue: the coordinate reference system (CRS) follow the British National Grid (i.e. OSGB36). This is great **but** often enough is not the standard normally used for choropleth.
 
