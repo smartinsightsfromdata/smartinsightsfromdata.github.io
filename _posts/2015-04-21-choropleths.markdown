@@ -79,10 +79,14 @@ As discussed above, these are the fully clipped shapefiles for the LSOA areas in
 There are a total of 36008 polygons in England and Wales.
 The extent are the coordinates of the total "box" including England and Wales.
 
-Here we encounter the first "real" issue: the coordinate reference system (CRS) follow the British National Grid (i.e. OSGB36). This is great **but** often enough is not the standard normally used for choropleth.
+Here we encounter the first "real" issue: the coordinate reference system (CRS) follow the British National Grid (i.e. OSGB36). It is a transverse Mercator projection with an origin (the "true" origin) at 49° N, 2° W (an offshore point in the English Channel which lies between the island of Jersey and the French port of St. Malo), based on the Airy ellipsoid.
+
+This is great **but** often enough OSGB36 is **not** the standard normally used for choropleth.
 
 If you want to superimpose your choropleth layer onto an existing map, and you want to avoid **any** major licensing issue, you need to use open source maps like OpenStreetMap.  These maps tend to use WGS84 as a coordinate reference system.  Inclusing Google map and Bing, which are not free and have clear use restrictions, follow a variation of WGS84 (often referred to EPSG: 3785).
 Incidentally EPSG: 3785 itself may create erros of up to 20Km in UK alone, as explained in this clear [article](https://alastaira.wordpress.com/2011/01/23/the-google-maps-bing-maps-spherical-mercator-projection/).
+
+This means that we will need to reproject our shapefiles to WGS84 to be able to superimpose the choropleth polygons to the underlying map layer underneath.
 
 Next part we will cover selecting and re-projection (i.e. how to fix the above issue and use the proper CRS).
 
