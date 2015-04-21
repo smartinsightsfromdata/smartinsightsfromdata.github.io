@@ -57,7 +57,7 @@ On the other hand, as this is a R workflow, in this case I'll stick to R.
 The following code will allow us to see what is in the shapefiles (as normally you download ESRI shapefiles from the ONS portal I'll use this format).
 
 Please note that the packages used are rgeos and rgdal.  The complexities and pitfalls in properly installing these libraries are out of scope of this brief tutorial.  Let me know if is a topic I should cover more in detail.
-{% highlight R linenos=table %}
+{% highlight R %}
 library(rgdal)
 library(rgeos)
 #
