@@ -6,24 +6,23 @@ date: 2015-04-22
 
 ### Select the shapefile (and re-project if necessary)
 
-I reproduce here part of the code used in Part 1. Please note that further details of the structure of an ESRI shapefile are covred [here](http://www.gdal.org/drv_shapefile.html)
+A detailed description of the structure of ESRI shapefiles and their treatment by the gdal library are covered [here](http://www.gdal.org/drv_shapefile.html)
 
+Let's read the actual shapefiles. The rgdal package reads them into an object defines as SpatialPolygonsDataFrame, to recognise their dual nature (polygons + data).
 {% highlight R %}
-# code omitted
-ogrInfo(dns, "LSOA_2011_EW")
+> ewAll <- readOGR(dsn=dns, layer="LSOA_2011_EW",  stringsAsFactors=FALSE)
+OGR data source with driver: ESRI Shapefile 
   Source: "/Users/e/Dropbox/dev/DevLib/MyGISLib/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Full_Clipped)", layer: "LSOA_2011_EW"
-  Driver: ESRI Shapefile number of rows 36008 
-  Feature type: wkbPolygon with 2 dimensions
-  Extent: (82672 5337.9) - (655604.7 657534.1)
-  CRS: +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +units=m +no_defs  
-  LDID: 0 
-  Number of fields: 2 
-      name type length typeName
-  1 LSOA11CD    4      9   String
-  2 LSOA11NM    4    254   String
+  with 36008 features
+  It has 2 fields
+# It is helpful understand the class of the ewAll object
+> class(ewAll)
+  [1] "SpatialPolygonsDataFrame"
+  attr(,"package")
+  [1] "sp
 {% endhighlight %}
 
-The "data" part of the shapefile comes at the end:
+In Part 1 we have already encountered the "data" part of the shapefile:
 
 {% highlight R %}
   1 LSOA11CD    4      9   String
