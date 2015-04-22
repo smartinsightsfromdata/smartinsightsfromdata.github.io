@@ -108,7 +108,7 @@ p
 
 .container
 {
-  width:80%;
+  width:90%;
   padding-right:0;
   padding-top:30px
 }
@@ -419,7 +419,7 @@ pre
 
 .article-title
 {
-  font-size:35px;
+  font-size:25px;
   font-weight:700;
   color:#d90006;
   padding-top:15px

@@ -22,6 +22,9 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
+
+
+
 defaults:
   - scope:
       path: ""
