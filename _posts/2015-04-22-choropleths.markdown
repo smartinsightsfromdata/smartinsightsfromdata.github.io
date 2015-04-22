@@ -65,6 +65,48 @@ In this case I know that all the LSOA shapes in Leeds have "Leeds" in the name. 
 
 We can now plot the shapefile. Before would have been too much for RStudio, my IDE of choice (and even tools like QGIS struggle a bit for the sheer number of polygons to display).
 
+![plot](/images/LeedsLSOA.png)
+
+Now we will change the projection, moving from OSGB36 to WSG84.
+
+```
+leedsCoor <- CRS("+proj=longlat +datum=WGS84")
+newLeedsShape <- spTransform(leedsST, leedsCoor)
+```
+
+We could re-plot the shapefiles, but probably at this stage we wouldn't notice a major difference.
+
+#### Simplify the shapefile and save it to geojson
+
+This step is very simple.  Basically a polygon contains numerous nodes, i.e. points: every nook and cranny of the area of reference is detailed.  This is too much detail for a choropleth. The size of the Leeds shapefile we have obtained is around 16Mb. This would make it difficult to show our choropleth on a mobile phone.
+
+The solution is simple: it is possible to simplify the polygons reducing the number of nodes. We use the well established Ramer–Douglas–Peucker algorithm (RDP) to reduce the number of points in a curve that is approximated by a series of points. 
+We need to be careful though: too much simplifications and the polygons will start to "open up": basically they will not appear attached to each other anymore and holes will start to manifest. This is where it is convenient to use tools like QGIS to try the best tolerance coefficient for the simplification.
+I will be satisfied with a reduction to ~10% of the original size. 
+The simplification uses ```gSimplify``` from the ```rgdal``` package.
+
+```R
+# gSimplify strips the data portion away - it needs to be saved first
+>df <- newLeedsShape@data
+#
+>newLeedsSimp <- gSimplify(newLeedsShape, 0.00005, topologyPreserve=TRUE)
+# now we can recombine the two portions of the SpatialPolygonsDataFrame
+>newLeedsSimpShape <- SpatialPolygonsDataFrame(newLeedsSimp,data=df)
+# eventually we can save the file to geojson
+>writeOGR(newLeedsSimpShape,'./data/newLeedsSimp.geojson','newLeedsSimpShape', driver='GeoJSON',check_exists = FALSE)
+```
+The original shapefile has been seriously simplified and re-projected. What if we have made some mistake along the way?
+
+A very simple, but very useful trick we can use to check on our geojson is to load it in a gist in github.
+
+Github will render the shapefile over a zoomable map of the area: we can see directly the quality of what we have done so far.
+
+{% gist 303edd54995ba6fcdd09 %}
+
+Another interesting characteristic of our map is that clicking on a polygon will display its Code Name and Name. We will come back to exploit this feature later.
+
+
+This concludes Part 2 of this series.  Next part will adress the data preparation.
 
 
 

@@ -20,8 +20,8 @@ The steps are
 1. Get shapefiles
 2. Get the shapefiles of the area of interest
 3. Select the shapefile (and re-project if necessary)
-4. Prepare the data
-5. Simplify the shapefile and save it to geojson
+4. Simplify the shapefile and save it to geojson
+5. Prepare the data
 6. Depending on the libraries you want to use, convert to topojson
 7. Select the banding cuts and how to implement them
 8. Test the choropleth in a browser
