@@ -90,9 +90,10 @@ We could re-plot the shapefiles, but probably at this stage we wouldn't notice a
 
 This step is very simple.  Basically a polygon contains numerous nodes, i.e. points: every nook and cranny of the area of reference is detailed.  This is too much detail for a choropleth. The size of the Leeds shapefile we have obtained is around 16Mb. This would make it difficult to show our choropleth on a mobile phone.
 
-The solution is simple: it is possible to simplify the polygons in a number of ways, for example reducing the number of nodes. We will use the well established Ramer–Douglas–Peucker algorithm (RDP) to reduce the number of points in a curve that is approximated by a series of points. 
+The solution is simple: it is possible to simplify the polygons in a number of ways, for example reducing the number of nodes. We will use the well established Ramer–Douglas–Peucker algorithm (RDP) to reduce the number of points in a curve that is approximated by a series of points (please note that I'll mention topojson later in another part of the tutorial).
+
 We need to be careful though: too much simplifications and the polygons will start to "open up": basically they will not appear attached to each other anymore and holes will start to manifest. This is where it is convenient to use tools like QGIS to visually play with the best tolerance coefficient for the simplification.
-I will be satisfied with a reduction to ~10% of the original size. 
+This time I will be satisfied with a reduction to ~10% of the original size. 
 The simplification uses ```gSimplify``` from the ```rgdal``` package.
 
 ```R
@@ -116,14 +117,16 @@ Github will render the shapefile over a zoomable map of the area (currently base
 
 Another interesting characteristic of our map is that clicking on a polygon will display its Code Name and Name. We will come back to exploit this feature later.
 
-#### A note of caution
-
 The method of using github is great and in my experience a fundamental part of the process, allowing to spot projection errors etc. before going too far ahead.
 
-During the preparation for this simple tutorial I've discovered few interesting things I had forgotten or I didn't know.
-- geojson standard is actually based on a WGS84 projection. If you want to be really specific, "urn:ogc:def:crs:OGC:1.3:CRS84".  This info appears in the beginning of the geojson file as CRS.
-- rgdal / gdal automatically re-project the shapefiles when saving to geojson if it is not already in the right CRS: you could possibly save the re-projection step.
-- Github uses openstreetmap (currently the mainstream open source map) to render geojson in their gists. One of the imlications is that github supports only urn:ogc:def:crs:OGC:1.3:CRS84 (e.g. WGS84).
+#### A side note
+
+During the preparation of this simple tutorial I've discovered few interesting things I had forgotten or I didn't know.
+
+- geojson standard is actually based on a WGS84 projection. If you want to be really specific, "urn:ogc:def:crs:OGC:1.3:CRS84".  This info is in the beginning of the geojson file as CRS.
+- rgdal / gdal automatically re-project the shapefiles when saving to geojson if it is not already in the right CRS: you could possibly save the re-projection step if you save to geojson.
+- Github renders in their gists only geojson (and topojson). One of the imlications is that github supports only urn:ogc:def:crs:OGC:1.3:CRS84 (e.g. WGS84).
+- Github uses a openstreetmap (currently the mainstream open source map) layer to render geojson in their gists. .
 - As the Ordnance Survey site puts it, it is a myth to believe that it is possible to re-project exactly from one CRS to another with a simple algorithm: you are bound to have projection errors.  Especially on a large scale it would be good to have an idea of where you are going to have the largest errors - and how big is going to be.  Even a "complex" one like the seven point Helmert transformation gives some residual errors.
 
 This concludes Part 2 of this series.  Next part will adress the data preparation.
