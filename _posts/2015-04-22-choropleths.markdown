@@ -118,12 +118,12 @@ Another interesting characteristic of our map is that clicking on a polygon will
 
 #### A note of caution
 
-The method of using github is great and in my experience a fundamental part of the process, allowing to spot projection errors etc. before going too far.
+The method of using github is great and in my experience a fundamental part of the process, allowing to spot projection errors etc. before going too far ahead.
 
 During the preparation for this simple tutorial I've discovered few interesting things I had forgotten or I didn't know.
 - geojson standard is actually based on a WGS84 projection. If you want to be really specific, "urn:ogc:def:crs:OGC:1.3:CRS84".  This info appears in the beginning of the geojson file as CRS.
-- rgdal / gdal automatically re-project the shapefiles when saving to geojson if it is not already in the right projection: you could possibly save the re-projection step.
-- Github uses openstreetmap (currently the mainstream open source map) to render geojson in their gists. Currently github supports only urn:ogc:def:crs:OGC:1.3:CRS84 (e.g. WGS84).
+- rgdal / gdal automatically re-project the shapefiles when saving to geojson if it is not already in the right CRS: you could possibly save the re-projection step.
+- Github uses openstreetmap (currently the mainstream open source map) to render geojson in their gists. One of the imlications is that github supports only urn:ogc:def:crs:OGC:1.3:CRS84 (e.g. WGS84).
 - As the Ordnance Survey site puts it, it is a myth to believe that it is possible to re-project exactly from one CRS to another with a simple algorithm: you are bound to have projection errors.  Especially on a large scale it would be good to have an idea of where you are going to have the largest errors - and how big is going to be.  Even a "complex" one like the seven point Helmert transformation gives some residual errors.
 
 This concludes Part 2 of this series.  Next part will adress the data preparation.
