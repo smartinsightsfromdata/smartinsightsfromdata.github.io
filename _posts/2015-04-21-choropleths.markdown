@@ -67,22 +67,23 @@ Please note that the R packages used are rgeos and rgdal.  The complexities and 
 #
 >dns <- "/Users/e/Dropbox/dev/DevLib/MyGISLib/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Full_Clipped)"
 
->ogrInfo(dns, "LSOA_2011_EW")
-  Source: "/Users/e/Dropbox/dev/DevLib/MyGISLib/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Full_Clipped)", layer: "LSOA_2011_EW"
-  Driver: ESRI Shapefile number of rows 36008 
-  Feature type: wkbPolygon with 2 dimensions
-  Extent: (82672 5337.9) - (655604.7 657534.1)
-  CRS: +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +units=m +no_defs  
-  LDID: 0 
-  Number of fields: 2 
-      name type length typeName
-  1 LSOA11CD    4      9   String
-  2 LSOA11NM    4    254   String
+>ogrInfo(dns, "LSOA_2011_EW_BFC")
+ Source: "/Users/e/Dropbox/dev/DevLib/MyGISLib/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Full_Clipped)_V2", layer: "LSOA_2011_EW_BFC_V2"
+Driver: ESRI Shapefile number of rows 34753 
+Feature type: wkbPolygon with 2 dimensions
+Extent: (82672 5337.9) - (655604.7 657534.1)
+CRS: +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +datum=OSGB36 +units=m +no_defs  
+LDID: 87 
+Number of fields: 3 
+       name type length typeName
+1  LSOA11CD    4      9   String
+2  LSOA11NM    4    254   String
+3 LSOA11NMW    4    254   String
 ```
 Now let's interpret the above information provided by rgdal.
 
 As discussed above, these are the fully clipped shapefiles for the LSOA areas in England and Wales (E+W).
-There are a total of 36008 polygons in England and Wales.
+There are a total of 34753 polygons in England and Wales.
 The "extent" are the coordinates of the total "box" including England and Wales.
 
 Here we encounter the first "real" issue: the coordinate reference system (CRS) follow the British National Grid (i.e. OSGB36). 
