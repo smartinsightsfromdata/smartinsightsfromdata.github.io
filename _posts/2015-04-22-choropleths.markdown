@@ -102,7 +102,7 @@ A very simple, but very useful trick we can use to check on our geojson is to lo
 
 Github will render the shapefile over a zoomable map of the are: we can see directly the quality of what we have done so far.
 
-{% gist 303edd54995ba6fcdd09 %}
+{% gist 0daf1cdb42b7f3a0d09b %}
 
 Another interesting characteristic of our map is that clicking on a polygon will display its Code Name and Name. We will come back to exploit this feature later.
 
