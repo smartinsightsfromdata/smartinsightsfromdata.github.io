@@ -304,7 +304,7 @@ pre
 {
   width:100%;
   height:40vh; /* was 80vh */
-  min-height:450px; /* was 500px */
+  min-height:500px; /* was 500px */
   margin-top:-50px;
   box-shadow:inset 0 -10px 5px -2px rgba(119,119,119,0.35);
   -moz-box-shadow:inset 0 -10px 5px -2px rgba(119,119,119,0.35);
