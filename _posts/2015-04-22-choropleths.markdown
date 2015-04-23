@@ -95,16 +95,26 @@ The simplification uses ```gSimplify``` from the ```rgdal``` package.
 # eventually we can save the file to geojson
 >writeOGR(newLeedsSimpShape,'./data/newLeedsSimp.geojson','newLeedsSimpShape', driver='GeoJSON',check_exists = FALSE)
 ```
+
 The original shapefile has been seriously simplified and re-projected. What if we have made some mistake along the way?
 
 A very simple, but very useful trick we can use to check on our geojson is to load it in a gist in github.
 
-Github will render the shapefile over a zoomable map of the area: we can see directly the quality of what we have done so far.
+Github will render the shapefile over a zoomable map of the are: we can see directly the quality of what we have done so far.
 
 {% gist 303edd54995ba6fcdd09 %}
 
 Another interesting characteristic of our map is that clicking on a polygon will display its Code Name and Name. We will come back to exploit this feature later.
 
+#### A note of caution
+
+The method of using github is great.  During the process of writing this simple tutorial I've discovered few interesting things I had forgotten or I didn't know.
+- geojson standard is actually pased on a WGS84 projection. If you want to be really specific, "urn:ogc:def:crs:OGC:1.3:CRS84".  This info appears in the json file as CRS.
+- rgdal / gdal automatically re-project the shapefiles when saving to geojson if it is not already in the right projection.
+- Github uses openstreetmap (the main open source map) to render geojson in their gists. Currently github supports only urn:ogc:def:crs:OGC:1.3:CRS84 (e.g. WGS84).
+- As the Ordnance Survey site puts it, it is a myth to believe that is possible to re-project exactly from one CRS to another with a simple algorith (and even a "complex" one like the seven point Helmert transformation gives some residual errors).
+
+All of the above notwithstanding, I've got a real surprise when I saw that that the geojson produced with this pipeline does not superimpose with the openstreetmap on github but it is sligthly shifted, which normally does not happen when I use QGIS (which uses gdal as well).  I'm investigating and report on this issue asap.
 
 This concludes Part 2 of this series.  Next part will adress the data preparation.
 
