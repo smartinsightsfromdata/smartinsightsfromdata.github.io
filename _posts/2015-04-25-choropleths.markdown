@@ -11,7 +11,7 @@ As mentioned in Part 3, the leaflet libaries is developed by RStudio (a guarante
 
 The R library leaflet is undergoing a major revamp as we speak. in order to get (some of) the latest features, I've used the following code to install it in my laptop:
 
-```R
+```{r}
 devtools::install_github("rstudio/leaflet", ref="feature/color-legend")
 ```
 
@@ -49,7 +49,7 @@ A few comments:
 - It is useful to centre the map. The easiest way to do it is to get the "box" of the overall shape, which are the minimum and maximum long / lat coordinates of the geojson shapes we are using, and calculate the centre.
 - We discussed popups in Part 3. Here I show an implementation with sprintf.  It can be made more complex and display data on multiple lines (and it could as well become a character specified as function parameter).
 
-### Binning & Colour Palettes
+#### Binning & Colour Palettes
 
 As discussed we build a choropleth to diplay numerical variables, either continuous or discrete.
 As we want to colour the different areas in relationship to a choosen variable, we need to find a way to bin the data in the number of cuts we want to use for the map.
@@ -81,6 +81,11 @@ myMap(leedsShape, szoom=11,pal,vals= leedsShape@data$Unemployed_,area= leedsShap
          Pops= leedsShape@data$Population, title = '% Unemployment')
 ```
 
+I published the code [here](http://rpubs.com/enzoma/leedsGeo02). You can also navigate the map (zoom etc.).
+
+Below is a static pic of the resulting choropleth:
+
+![plot](/images/Rplot.png)
 
 
 This concludes Part 4 of the tutorial.

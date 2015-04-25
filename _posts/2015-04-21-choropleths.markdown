@@ -85,7 +85,7 @@ Now let's interpret the above information provided by rgdal.
 
 As discussed above, these are the fully clipped shapefiles for the LSOA areas in England and Wales (E+W).
 There are a total of 34753 polygons in England and Wales.
-The "extent" are the coordinates of the total "box" including England and Wales.
+The "extent" are the coordinates of the total "box" including England and Wales (concept equivalent to bbox in the sp package).
 
 Here we encounter the first "real" issue: the coordinate reference system (CRS) follow the British National Grid (i.e. OSGB36). 
 It is a transverse Mercator projection with an origin (the "true" origin) at 49° N, 2° W (an offshore point in the English Channel which lies between the island of Jersey and the French port of St. Malo), based on the Airy ellipsoid, as well as a "false" origin to eliminate negative numbers.
