@@ -23,8 +23,9 @@ The steps are
 4. Simplify the shapefile and save it to geojson
 5. Intro to choropleth libraries
 6. Prepare the data (e.g. banding cuts etc.)
-7. Two main choropleth libraries
-8. Lesson learned
+7. The leaflet library
+8. The rdatamaps library
+9. Lesson learned
 
 First step of course is to get adequate shapefiles.
 
