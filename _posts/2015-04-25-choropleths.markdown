@@ -78,14 +78,14 @@ I have decided to display unemployment percentage figures in Leeds LSOAs, so the
 ```R
 pal = colorBin('YlOrRd', leedsShape@data$Unemployed_, 5)
 myMap(leedsShape, szoom=11,pal,vals= leedsShape@data$Unemployed_,area= leedsShape@data$Name,
-         Pops= leedsShape@data$Population, title = '% Unemployment')
+         Pops= leedsShape@data$Workers, title = '% Unemployment')
 ```
 
 I published the entire code of this part [here](http://rpubs.com/enzoma/leedsGeo02), where you can also navigate the map (zoom etc.).
 
 Below is a static pic of the resulting choropleth:
 
-![plot](/images/Rplot.png)
+![plot](/images/Rplot01.png)
 
 
 This concludes Part 4 of the tutorial.

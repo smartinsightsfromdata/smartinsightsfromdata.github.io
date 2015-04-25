@@ -83,10 +83,9 @@ nrow(dt_)
 colnames(dt_)[1:2] <- c( "LSOA","Name")
 colnames(dt_)[5] <- "Population"
 colnames(dt_)[378:379] <-  c("Unemployed","Employed")
-dt_ <- dt_[,.(LSOA, Name, Unemployed=as.numeric(Unemployed), 
+dt_ <- dt_[,.(LSOA, Name, Unemployed=as.numeric(Unemployed), Workers= as.numeric(Unemployed) + as.numeric(Employed),
       Employed=as.numeric(Employed), Population= as.numeric(Population))][,
-      Unemployed_:= round(Unemployed/Population*100,2)]
-
+      Unemployed_:= round(Unemployed/Workers*100,2)]
 #--------------------------------------------------------------------
 # do we have an identical number of matching elements?
 
