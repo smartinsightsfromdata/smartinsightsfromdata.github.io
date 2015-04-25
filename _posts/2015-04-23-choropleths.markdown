@@ -9,17 +9,16 @@ date: 2015-04-23
 
 Some choropleth implementation may offer one or both of the following features:
 
-- hover-over. Basically this makes available to the client / server when the cursor is above a polygon.  In turn this is exploited for displaying information realtive to the area enclosed by the polygon.
-- mouse-click. If a polygon is clicked, the information is made available to the client / server and again this can be used to display different types of information.
+- Hover-over. Basically this makes available the information of which polygon the mouse / cursor is on to the client / server.  In turn this is exploited for displaying information relative to the area enclosed by the polygon.
+- Mouse-click. If a polygon is clicked, the information is made available to the client / server and again this can be used to display different types of information.
 - Legend may shows how the different areas are doing, based on different colour schemes and cuts.
 - Popup legend may be associated to hover-over or mouse-clicks events.
+- Availability of pre-packaged geographical information to make the loading of a particular shapefile unnecessary. Usually the area involved is the US: therefore the feature is not really appreciated in the rest of the world.
 
-Other considerations point to increase levels of sofistication, moving from simple choropleth to the ability to:
+Other considerations point to increase levels of sophistication, moving from simple choropleth to the ability to:
 
 - Add icons and points in different layers.
 - Add drill down from a larger region to a smaller region displaying different colours.
-
-Another feature is if the library contains pre-packaged geographical information to make the loading of a particular shapefile unnecessary. Usually the area involved is the US and the feature is not really appreciated in the rest of the world.
 
 Choropleth are rendered through different media, e.g. markdown documents, html web pages, as components of a shiny app etc. Different style of interaction may be expected.  This will influence our choice of library
 
@@ -31,7 +30,7 @@ While I always keep an eye out for new, better things (and welcome any indicatio
 #### Introduction to Data Preparation
 
 If we are building an analytical application, is very important to address what do do with the data.  
-A choropleth can display well **one** type of information at a time, usually a numerical variable (continous or discrete).
+A choropleth can display well **one** type of information at a time, usually a numerical variable (continuous or discrete).
 
 If we want to make available lots of data in our choropleth the user will have to have ways to choose which dataset (or which feature) to see. A way to handle multiple datasets or data items is to divide the data into the following categories:
 
@@ -46,7 +45,7 @@ In association with the above the design of our analytical app will have to dete
 
 Just recently a new concept is emerging for analytical applications: whether the map creation should be **local** or **remote**.  See Joe Cheng (the SW architect that has designed the shiny framework in R) [post](https://github.com/rstudio/leaflet/pull/60) introducing this interesting concept.
 
-Basically a choropleth is made of a map plus a numer of other features, first and foremost the data associated to it.
+Basically a choropleth is made of a map plus a number of other features, first and foremost the data associated to it.
 Should the choropleth just be **local**, and destroyed every time something is changed, or should it be **remote**, with the different elements added and subtracted as driven by server logic?
 
 Clearly I can imagine plenty of cases where it could be beneficial a remote map creation to manage flexibly and dynamically many types of analysis.  More on this later.
@@ -54,7 +53,7 @@ Clearly I can imagine plenty of cases where it could be beneficial a remote map 
 
 #### Prepare the data
 
-At the moment we do not have interesting data to use for the chopleth.  Let's fix that.
+At the moment we do not have interesting data to use for the choropleth.  Let's fix that.
 
 to start with we can use the LSOA data available in the [Leeds Observatory](http://observatory.leeds.gov.uk/dataviews/view?viewId=235). I've downloaded in csv format the ```LSOA subset: Leeds```
 
@@ -99,15 +98,15 @@ length(intersect(leedsShape@data$LSOA11CD,dt_[,LSOA] ))
 
 #--------------------------------------------------------------------
 # This is to "merge" the data portion of the geojson to the data we will display
-# this tecnique just "works" preserving order and matching
-# other tecniques may give errors like "row.names of data and Polygons IDs do not match"
+# this technique just "works" preserving order and matching
+# other techniques may give errors like "row.names of data and Polygons IDs do not match"
 
 leedsShape@data <- data.frame(leedsShape@data, dt_[match(leedsShape@data[, "LSOA11CD"], dt_[, LSOA]),])
 
 leedsShape@data$LSOA11NM <- leedsShape@data$LSOA <- NULL  # eliminate duplicated or unused columns
 ```
 
-The comments to the code should be self-explanatory.  The main issue are the 42 missing or mismatched poligons.  For the time being we will keep them as missing.
+The comments to the code should be self-explanatory.  The main issue are the 42 missing or mismatched polygons.  For the time being we will keep them as missing.
 
 This concludes Part 3 of the tutorial.
 

@@ -7,13 +7,13 @@ I attended the last DataKind Data Dive in Leeds.
 
 Once more, we had to confront the issue of producing attractive choropleths from shapefiles, in a short time.
 
-I thought to document the entire complete workflow here, as every time I struggle to remember how to go about to do some of the steps, going back to my poorly commented old files, or I start to use too many tools.
+I thought to document the entire complete workflow here, as usually is a struggle to remember how to go about it.
 
-This workflow is the result of many hours of efforts consulting many blogs and stackoverflow posts.  I am grateful for all the help received but I am unable to recognise every contribution.  Perhaps the best way to say thank you is to give back to the community in the form of this post.
+This workflow is the result of hours of experiments, consulting many blogs and stackoverflow posts.  I am grateful for all the help received but I am unable to recognise every contribution.  Perhaps the best way to say thank you is to give back to the community in the form of this post.
 
 #### The process
 
-The process is farily simple, but includes many different steps and many R libraries, hence it is important to know what you are doing (or follow the steps precisely!).
+The process is fairly simple, but includes many different steps and many R libraries, hence it is important to know what you are doing (or follow the steps precisely!).
 
 The steps are
 
@@ -22,7 +22,7 @@ The steps are
 3. Select the shapefile (and re-project if necessary)
 4. Simplify the shapefile and save it to geojson
 5. Intro to choropleth libraries
-6. Prepare the data (e.g. banding cuts etc.)
+6. Prepare the data
 7. The leaflet library
 8. The rdatamaps library
 9. Lesson learned
@@ -36,7 +36,7 @@ The easiest thing, especially if you need to build a choropleth with census data
 Before this though it would be appropriate decide which level of detail the choropleth will have (e.g. from continents and major countries to post code analysis).  This mostly depends from the type of analysis you need to do.
 
 The following code will assume to use UK local data, but the examples and the code is easily extensible to any area or country.
-Becasue of the standard set by the ONS in the UK in general we are spolied for choices, but to keep this simple I will select to download shapefiles at the LSOA (lower layer super output areas) level.  This [page](http://www.ons.gov.uk/ons/guide-method/geography/beginner-s-guide/census/super-output-areas--soas-/index.html) in the ONS website will guide you on the difference between different output areas.  Of course more "traditional" choies like wards etc. are also available.
+Because of the standard set by the ONS in the UK in general we are spoiled for choices, but to keep this simple I will select to download shapefiles at the LSOA (lower layer super output areas) level.  This [page](http://www.ons.gov.uk/ons/guide-method/geography/beginner-s-guide/census/super-output-areas--soas-/index.html) in the ONS website will guide you on the difference between different output areas.  Of course more "traditional" choices like wards etc. are also available.
 The shapefiles come in two flavours:
 - clipped, basically excluding shores and potentially some river islands
 - non-clipped

@@ -7,7 +7,7 @@ date: 2015-04-25
 
 #### The leaflet library
 
-As mentioned in Part 3, the leaflet libaries is developed by RStudio (a guarantee of quality!) and it is based on the **best** JavaScript mapping library: [leaflet.js](http://leafletjs.com/) by Vladimir Agafonkin. It is Leaflet is an open-source JavaScript library for mobile-friendly interactive maps: only 33 KB of JS!
+As mentioned in Part 3, the leaflet libraries is developed by RStudio (a guarantee of quality!) and it is based on the **best** JavaScript mapping library: [leaflet.js](http://leafletjs.com/) by Vladimir Agafonkin. It is Leaflet is an open-source JavaScript library for mobile-friendly interactive maps: only 33 KB of JS!
 
 The R library leaflet is undergoing a major revamp as we speak. in order to get (some of) the latest features, I've used the following code to install it in my laptop:
 
@@ -44,29 +44,29 @@ myMap = function(shape,szoom, pal, area,vals,Pops, ...) {
 
 A few comments:
 
-- The leaflet function call components are piped using the great magrittr package.
-- leaflet will by default use openstreetmap (this is the addTiles() portion).  Other types of maps, usually open source,  can be used.  See [here](http://leaflet-extras.github.io/leaflet-providers/preview/index.html).
+- The "leaflet" function call components are piped using the great magrittr package.
+- "leaflet" will by default use openstreetmap (this is the addTiles() portion).  Other types of maps, usually open source,  can be used.  See [here](http://leaflet-extras.github.io/leaflet-providers/preview/index.html).
 - It is useful to centre the map. The easiest way to do it is to get the "box" of the overall shape, which are the minimum and maximum long / lat coordinates of the geojson shapes we are using, and calculate the centre.
 - We discussed popups in Part 3. Here I show an implementation with sprintf.  It can be made more complex and display data on multiple lines (and it could as well become a character specified as function parameter).
 
 #### Binning & Colour Palettes
 
-As discussed we build a choropleth to diplay numerical variables, either continuous or discrete.
-As we want to colour the different areas in relationship to a choosen variable, we need to find a way to bin the data in the number of cuts we want to use for the map.
+As discussed we build a choropleth to display numerical variables, either continuous or discrete.
+As we want to colour the different areas in relationship to a chosen variable, we need to find a way to bin the data in the number of cuts we want to use for the map.
 
-On the other hand the number of cuts (or bins) depends from the available number of colours in the colour palette we have choosen.
+On the other hand the number of cuts (or bins) depends from the available number of colours in the colour palette we have chosen.
 
 A good start is to choose the colour palette (but it is a chicken and egg argument).
 
-The absolute reference here is Chintya Brewer and her amazing work at PennState. I strongly recommend to spend time at the [site she created](http://colorbrewer2.org/), trying the different palettes and understanding the nature of data we need to display (sequential, divergent or qualitative) and whether we need to cater for colour blind people. 
+The absolute reference here is Cynthia Brewer and her amazing work at PennState. I strongly recommend to spend time at the [site she created](http://colorbrewer2.org/), trying the different palettes and understanding the nature of data we need to display (sequential, divergent or qualitative) and whether we need to cater for colour blind people. 
 
-She has also inspired the creation of the R package RColorBrewer.
+Cynthia has also inspired the creation of the R package RColorBrewer.
 
-The colour palette I have choosen is 'YlOrRd'.  Again I recommend to go onto Chintya website and experiment on different palettes. 
+The colour palette I have chosen is 'YlOrRd'.  Again I recommend to go onto Cynthia's website and experiment with different palettes. 
 
 Please consider that the maximum number of colours for sequential data is 9, so we will have to use 9 bins or less.
 
-leaflet offers the following binning functions:
+"leaflet" offers the following binning functions:
 
 - colorNumeric is a is a simple linear mapping from continuous numeric data
 #' to an interpolated palette.
