@@ -3,7 +3,7 @@ title: Complete choropleth dev. workflow in R (Part 1)
 date: 2015-04-21
 ---
 
-I've attended the last DataKind Data Dive in Leeds.
+I attended the last DataKind Data Dive in Leeds.
 
 Once more, we had to confront the issue of producing attractive choropleths from shapefiles, in a short time.
 
