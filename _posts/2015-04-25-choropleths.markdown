@@ -70,13 +70,17 @@ Please consider that the maximum number of colours for sequential data is 9, so 
 
 - colorNumeric is a is a simple linear mapping from continuous numeric data
 #' to an interpolated palette.
-- colorBin maps continuous numeric data performing binning based on value through the base::cut function. From R help: "cut divides the range of x into intervals and codes the values in x according to which interval they fall. The leftmost interval corresponds to level one, the next leftmost to level two and so on."
-- colorQuantile is similar to colorBin but uses the base::quantile function. From R help: "The generic function quantile produces sample quantiles corresponding to the given probabilities. The smallest observation corresponds to a probability of 0 and the largest to a probability of 1."
+- colorBin "maps continuous numeric data performing binning based on value through the base::cut() function", according to the help in the leaflet package.  In reality under the hood the binning is done with the function base::pretty().  The result is that currently the specified number of bins are taken only as an indication.
+- colorQuantile is similar to colorBin but uses the base::quantile() function. From R help: "The generic function quantile() produces sample quantiles corresponding to the given probabilities. The smallest observation corresponds to a probability of 0 and the largest to a probability of 1."
+- colorFactor maps factors to colours. If the palette is discrete and has a different number of colours than the number of factors, interpolation is used.
 
-I have decided to display unemployment percentage figures in Leeds LSOAs, so the function colorBin is the most appropriate. I will use 5 cuts.
+I have decided to display unemployment percentage figures in Leeds LSOAs, so the function colorBin is the most appropriate. I will specify 5 bins, but pretty() in my case decides to use 8 bins.
 
 ```R
-pal = colorBin('YlOrRd', leedsShape@data$Unemployed_, 5)
+# Please note that bins = 5 is actually superseeded by the use of pretty()
+
+pal = colorBin('YlOrRd', leedsShape@data$Unemployed_, bins = 5)
+
 myMap(leedsShape, szoom=11,pal,vals= leedsShape@data$Unemployed_,area= leedsShape@data$Name,
          Pops= leedsShape@data$Workers, title = '% Unemployment')
 ```
@@ -86,6 +90,9 @@ I published the entire code of this part [here](http://rpubs.com/enzoma/leedsGeo
 Below is a static pic of the resulting choropleth:
 
 ![plot](/images/Rplot01.png)
+
+In the next part we will visit some of the other binning
+functions.
 
 
 This concludes Part 4 of the tutorial.
