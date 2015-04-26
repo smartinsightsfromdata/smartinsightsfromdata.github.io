@@ -11,7 +11,7 @@ As mentioned in Part 3, the leaflet libraries is developed by RStudio (a guarant
 
 The R library leaflet is undergoing a major revamp as we speak. in order to get (some of) the latest features, I've used the following code to install it in my laptop:
 
-```{r}
+```R
 devtools::install_github("rstudio/leaflet", ref="feature/color-legend")
 ```
 
