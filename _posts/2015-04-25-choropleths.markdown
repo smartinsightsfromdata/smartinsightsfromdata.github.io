@@ -1,6 +1,12 @@
 ---
 title: Complete choropleth dev. workflow in R (Part 4)
 date: 2015-04-25
+layout: post
+category: GIS
+tags: gis leaflet choropleth
+year: 2015
+published: true
+summary: Part 4 of Complete choropleth dev. workflow in R
 ---
 
 (this is a continuation from Part 3)
