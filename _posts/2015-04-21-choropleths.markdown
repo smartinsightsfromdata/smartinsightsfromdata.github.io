@@ -8,10 +8,9 @@ year: 2015
 published: true
 summary: Part 1 of Complete choropleth dev. workflow in R
 ---
+![datakind](/images/DataKindUK.png)
 
 I attended the last DataKind Data Dive in Leeds.
-
-![datakind](/images/DataKindUK.png)
 
 Once more, we had to confront the issue of producing attractive choropleths from shapefiles, in a short time.
 
